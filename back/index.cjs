@@ -13,6 +13,11 @@ app.use(cors({
   allowedHeaders: ["Content-Type", "Authorization"],
 }));
 
+app.use((req, res, next) => {
+  res.setHeader('Cache-Control', 'no-store');
+  next();
+});
+
 const sql = neon(`${process.env.DATABASE_URL}`);
 
 app.get('/decks', async (_, res) => {
