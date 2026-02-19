@@ -8,7 +8,7 @@ const app = express();
 const PORT = process.env.PORT || 4242;
 
 app.use(cors({
-  origin: ["http://localhost:3000", "https://learn-with-me.vercel.app"],
+  origin: ["http://localhost:3000", "https://learn-with-me-hgo92.vercel.app"],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
 }));
