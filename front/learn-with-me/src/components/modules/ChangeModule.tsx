@@ -1,5 +1,5 @@
 export default async function changeCarte(newName : string, newTrad : string, id : number) {
-    const url = "http://localhost:4242/changecarte";
+    const url = `${import.meta.env.VITE_API_URL}/changecarte`;
     const response = await fetch(url, {
         method : 'PUT',
         headers: {
@@ -16,7 +16,7 @@ export default async function changeCarte(newName : string, newTrad : string, id
 }
 
 export async function changeDeck(newName : string, deckId : number) {
-    const url = "http://localhost:4242/changedeck";
+    const url = `${import.meta.env.VITE_API_URL}/changedeck`;
     const response = await fetch(url, {
         method : 'PUT',
         headers: {

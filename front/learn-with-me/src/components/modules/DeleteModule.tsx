@@ -1,5 +1,5 @@
 export default async function deleteCarte(carteId : number) {
-    const url = "http://localhost:4242/deletecarte";
+    const url = `${import.meta.env.VITE_API_URL}/deletecarte`;
     const response = await fetch(url, {
         method : 'DELETE',
         headers: {
@@ -15,7 +15,7 @@ export default async function deleteCarte(carteId : number) {
 
 export async function DeleteDeckModule(deckId: number) {
     try {
-    const url = "http://localhost:4242/deletedeck";
+    const url = `${import.meta.env.VITE_API_URL}/deletedeck`;
     const response = await fetch(url, {
         method : 'DELETE',
         headers: {

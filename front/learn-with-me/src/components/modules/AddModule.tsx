@@ -1,5 +1,5 @@
 export default async function addCarte(mot : string, traduction : string , deck_id : number) {
-    const url = "http://localhost:4242/addcarte";
+    const url = `${import.meta.env.VITE_API_URL}/addcarte`;
     const response = await fetch(url, {
         method : 'POST',
         headers: {
@@ -16,7 +16,7 @@ export default async function addCarte(mot : string, traduction : string , deck_
 }
 
 export async function addDeck(name : string) {
-    const url = "http://localhost:4242/adddeck";
+    const url = `${import.meta.env.VITE_API_URL}/adddeck`;
     const response = await fetch(url, {
         method : 'POST',
         headers: {
