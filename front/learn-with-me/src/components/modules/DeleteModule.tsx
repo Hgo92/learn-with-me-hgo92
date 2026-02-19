@@ -1,5 +1,5 @@
 export default async function deleteCarte(carteId : number) {
-    const url = `${import.meta.env.VITE_API_URL}/deletecarte`;
+    const url = 'https://learn-with-me-back.vercel.app/deletecarte';
     const response = await fetch(url, {
         method : 'DELETE',
         headers: {
@@ -15,7 +15,7 @@ export default async function deleteCarte(carteId : number) {
 
 export async function DeleteDeckModule(deckId: number) {
     try {
-    const url = `${import.meta.env.VITE_API_URL}/deletedeck`;
+    const url = 'https://learn-with-me-back.vercel.app/deletedeck';
     const response = await fetch(url, {
         method : 'DELETE',
         headers: {
