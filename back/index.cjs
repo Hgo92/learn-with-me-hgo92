@@ -14,8 +14,8 @@ app.use(cors({
   credentials: true,
 }));
 
-// Répondre aux preflight OPTIONS
-app.options('*', cors());
+// Répondre aux preflight OPTIONS (Express 5 syntax)
+app.options('/{*path}', cors());
 
 app.use(express.json()); // ← MANQUAIT ! Sans ça req.body est undefined
 
