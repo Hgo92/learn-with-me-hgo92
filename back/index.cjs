@@ -11,7 +11,13 @@ app.use(cors({
   origin: ["http://localhost:3000", "https://learn-with-me-hgo92.vercel.app"],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true,
 }));
+
+// Répondre aux preflight OPTIONS
+app.options('*', cors());
+
+app.use(express.json()); // ← MANQUAIT ! Sans ça req.body est undefined
 
 app.use((req, res, next) => {
   res.setHeader('Cache-Control', 'no-store');
@@ -30,11 +36,10 @@ app.get('/cartes', async (req, res) => {
     res.json(response);
 });
 
-
 app.delete('/deletedeck', async (req, res) => {
     const {id} = req.body;
-    const response = await sql`DELETE FROM cards WHERE deck_id = ${id}`;
-    response = await sql`DELETE FROM decks WHERE id = ${id}`;
+    await sql`DELETE FROM cartes WHERE deck_id = ${id}`;
+    const response = await sql`DELETE FROM decks WHERE id = ${id}`;
     res.json({ success: true, message: 'Deck supprimé', deleted: response });
 });
 
@@ -59,14 +64,14 @@ app.put('/changecarte', async (req, res) => {
 app.post('/adddeck', async (req, res) => {
     const {name} = req.body;
     const response = await sql`INSERT INTO decks (name) VALUES (${name})`;
-    res.json({ success: true, message: 'Carte ajoutée', created: response });
-})
+    res.json({ success: true, message: 'Deck ajouté', created: response });
+});
 
 app.post('/addcarte', async (req, res) => {
     const {mot, traduction, deck_id} = req.body;
     const response = await sql`INSERT INTO cartes (mot, traduction, deck_id) VALUES (${mot},${traduction},${deck_id})`;
     res.json({ success: true, message: 'Carte ajoutée', created: response });
-})
+});
 
 app.listen(PORT, () => {
     console.log(`Listening to http://localhost:${PORT}`);
