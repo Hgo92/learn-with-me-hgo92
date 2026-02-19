@@ -8,9 +8,10 @@ const app = express();
 const PORT = process.env.PORT || 4242;
 
 app.use(cors({
-  origin: ["http://localhost:3000", "https://learn-with-me-back.vercel.app/"]
+  origin: ["http://localhost:3000", "https://learn-with-me-front.vercel.app"],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
 }));
-app.use(express.json());
 
 const sql = neon(`${process.env.DATABASE_URL}`);
 
