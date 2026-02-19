@@ -39,7 +39,7 @@ getDecks()
 }, [])
 
 async function getCartes() {
-    const url = `https://learn-with-me-back.vercel.app/decks`;
+    const url = `https://learn-with-me-back.vercel.app/cartes`;
     const response = await fetch(url);
     const data = await response.json();
     setDataCartes(data);
