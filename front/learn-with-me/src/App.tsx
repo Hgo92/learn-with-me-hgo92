@@ -24,7 +24,7 @@ const [dataDecks, setDataDecks] = useState<dataDecksProps[]>([]);
 const [dataCartes, setDataCartes] = useState<dataCartesProps[]>([]);
 
 async function getDecks() {
-    const url = "http://localhost:4242/decks";
+    const url = `${import.meta.env.VITE_API_URL}/decks`;
     const response = await fetch(url);
     const data = await response.json();
     setDataDecks(data);
@@ -39,7 +39,7 @@ getDecks()
 }, [])
 
 async function getCartes() {
-    const url = "http://localhost:4242/cartes";
+    const url = `${import.meta.env.VITE_API_URL}/decks`;
     const response = await fetch(url);
     const data = await response.json();
     setDataCartes(data);
