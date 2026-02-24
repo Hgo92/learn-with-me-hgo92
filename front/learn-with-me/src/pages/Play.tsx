@@ -1,3 +1,7 @@
+// Choses à faire : 
+// - Changer la couleur de la carte si bonne réponse
+// - Gestion de la réussite sur une carte
+
 import type { dataCartesProps, dataDecksProps } from "../App";
 import Navbar from "../components/Navbar";
 import { useState } from "react";
@@ -41,13 +45,13 @@ export default function Play({ decks, cartes }: PlayProps) {
         setScore(s => s + 1);
         const newCartes = cartesRestantes.filter((_, i) => i !== randomIndex);
         setCartesRestantes(newCartes);
-        setTimeout(() => nextCard(newCartes), 500);
+        nextCard(newCartes);
     };
 
     const handleFail = () => {
         setCartesJouees(j => j + 1);
         setLastResult('fail');
-        setTimeout(() => nextCard(cartesRestantes), 500);
+        nextCard(cartesRestantes);
     };
 
     const carteCourante = cartesRestantes[randomIndex];
@@ -67,7 +71,6 @@ export default function Play({ decks, cartes }: PlayProps) {
             {isStarted ? (
                 carteCourante ? (
                     <div className="w-full max-w-md flex flex-col gap-5">
-                        {/* Progress */}
                         <div className="flex justify-between text-xs text-ink-muted">
                             <span>{cartesRestantes.length} carte{cartesRestantes.length > 1 ? 's' : ''} restante{cartesRestantes.length > 1 ? 's' : ''}</span>
                             {cartesJouees > 0 && (
@@ -75,7 +78,6 @@ export default function Play({ decks, cartes }: PlayProps) {
                             )}
                         </div>
 
-                        {/* Flashcard */}
                         <div className={`bg-white rounded-2xl border-2 ${cardBorderClass} shadow-md p-8 flex flex-col gap-5 text-center transition-colors duration-300`}>
                             <div>
                                 <p className="text-xs text-ink-muted uppercase tracking-widest mb-2">Traduisez</p>
@@ -180,7 +182,7 @@ export default function Play({ decks, cartes }: PlayProps) {
                         onClick={handleStart}
                         className="py-3 rounded-xl text-base font-medium text-white bg-indigo-deep hover:bg-[#6366f1] transition-colors shadow-[0_4px_12px_rgba(55,48,163,0.25)]"
                     >
-                        C'est parti ! →
+                        C'est parti !
                     </button>
                 </div>
             )}
