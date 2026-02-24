@@ -27,7 +27,6 @@ export default function Decks({ decks, cartes, onReloadCartes, onReloadDecks }: 
         <main className="pt-20 bg-cream min-h-screen">
             <Navbar />
             <div className="flex flex-col gap-8">
-                {/* Header */}
                 <div className="flex items-center justify-between flex-wrap gap-4 pb-6 border-b border-border">
                     <div className="text-left">
                         <p className="text-xs text-ink-muted tracking-widest uppercase mb-1">Collection</p>

@@ -27,7 +27,7 @@ export default function Home() {
                     to="/play"
                     className="px-6 py-3 rounded-xl text-sm font-medium text-white bg-indigo-deep hover:bg-[#6366f1] hover:-translate-y-0.5 transition-all duration-200 shadow-[0_4px_12px_rgba(55,48,163,0.3)]"
                 >
-                    Commencer à jouer →
+                    Commencer à jouer
                 </Link>
             </div>
 

@@ -1,6 +1,7 @@
 // Choses à faire : 
-// - Changer la couleur de la carte si bonne réponse
-// - Gestion de la réussite sur une carte
+// - Changer la couleur de la carte si bonne réponse (via un useState changé dans handleSuccess/Fail ?)
+// - Choisir le nombre de cartes qu'on veut dans le jeu (ex : deck de 50 cartes, interrogé sur 10)
+// - Gestion de la réussite sur une carte (plus on réussit une carte, moins elle a de chance de revenir) 
 
 import type { dataCartesProps, dataDecksProps } from "../App";
 import Navbar from "../components/Navbar";
@@ -22,8 +23,8 @@ export default function Play({ decks, cartes }: PlayProps) {
     const [cartesJouees, setCartesJouees] = useState(0);
     const [lastResult, setLastResult] = useState<'success' | 'fail' | null>(null);
 
-    const nextCard = (remaining: dataCartesProps[]) => {
-        setRandomIndex(Math.floor(Math.random() * remaining.length));
+    const nextCard = (cartesRestantes : dataCartesProps[]) => {
+        setRandomIndex(Math.floor(Math.random() * cartesRestantes.length));
         setIsWordVisible(false);
         setAnswer("");
         setLastResult(null);
