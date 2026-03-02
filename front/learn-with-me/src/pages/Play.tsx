@@ -2,6 +2,11 @@
 // - Changer la couleur de la carte si bonne réponse (via un useState changé dans handleSuccess/Fail ?)
 // - Choisir le nombre de cartes qu'on veut dans le jeu (ex : deck de 50 cartes, interrogé sur 10)
 // - Gestion de la réussite sur une carte (plus on réussit une carte, moins elle a de chance de revenir) 
+// - Timer pour répondre
+//  - Heuristique 
+// - Check distance LEvenshtein
+// - Intégration IA (aisdk => recherche express)
+// - Table user ID/Name
 
 import type { dataCartesProps, dataDecksProps } from "../App";
 import Navbar from "../components/Navbar";
