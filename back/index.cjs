@@ -29,8 +29,6 @@ app.use((req, res, next) => {
 
 const sql = neon(`${process.env.DATABASE_URL}`);
 
-app.post('/generateIA')
-
 app.get('/decks', async (_, res) => {
     const response = await sql`SELECT * FROM decks`;
     res.json(response);
