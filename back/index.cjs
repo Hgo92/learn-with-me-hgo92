@@ -1,5 +1,8 @@
 require('dotenv').config();
 
+import { generateText, Output } from 'ai';
+import { z } from 'zod';
+
 const express = require('express');
 const { neon } = require('@neondatabase/serverless');
 const cors = require('cors');
@@ -25,6 +28,8 @@ app.use((req, res, next) => {
 });
 
 const sql = neon(`${process.env.DATABASE_URL}`);
+
+app.post('/generateIA')
 
 app.get('/decks', async (_, res) => {
     const response = await sql`SELECT * FROM decks`;
